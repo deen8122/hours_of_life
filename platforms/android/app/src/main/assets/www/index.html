@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Часы жизни</title>
+        <link rel="stylesheet" href="css/green-theme.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/fastclick.js"></script>
+        <script src="js/functions.js"></script>
+        <script type="text/javascript" src="js/timer/TimeCircles.js"></script>
+        <link rel="stylesheet" href="js/timer/TimeCircles.css" />
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
+        <script src="js/main.js"></script>
+
+    </head>
+
+    <!--
+https://www.iconfinder.com/icons/2137818/apple_food_fruit_organic_vegan_vegetarian_icon
+    
+      D:
+            cd D:\OpenServer\domains\hoursoflife\
+            set JAVA_HOME=D:\Program Files\Java\jdk1.8.0_77
+            cordova platform add android-23
+            cordova run android --release -- --keystore=D:\googledisk\key_dietolog_31129deen812.jks --storePassword=31129deen812 --alias=deen812 --password=31129deen812
+           
+ 
+    D:\OpenServer\domains\hoursoflife\platforms\android\app\build\outputs\apk\release
+    -->
+    <body>
+        <div class="layer-succes layer-succes1"></div>
+        <div class="layer-succes layer-succes2"></div>
+        <div class="layer-succes layer-succes3"></div>
+        <div class="layer-succes layer-succes4"></div>
+        <div class="layer layer-theme-4" id="alert" data-pos="left" onclick="$('#alert').css('left', '100%');SucessHide()">
+            <a onclick="$('#alert').css('left', '100%');SucessHide()" class="layer-close"></a>
+            <div>
+                <span id='alert_text'></span>
+            </div>
+        </div>
+
+        <div class="layer layer-theme-white" id="menu" data-pos="left" onclick="$('#menu').css('left', '100%');SucessHide()">
+            <a onclick="$('#menu').css('left', '100%');SucessHide()" class="layer-close"></a>
+            <div class="menu" >
+                <ul >
+                    <li> <a onclick="window.location = ''" class="button">Главная страница</a> </li>
+                    <li>  <a href="#form" class="button">Дата рождения</a> </li>
+                    <li> <a href="#howwork">Как работает приложение</a> </li>
+                    <li> <a href="#fullversion">Полная версия</a> </li>
+                    <li><a href="#" onclick="ExitApp();" class="deen-btn">Выйти</a></li>
+                </ul>
+
+
+                <br>
+
+            </div>
+        </div>
+
+        <!-- --- -->
+        <div data-role="page" data-theme="a" id='main'>
+            <div data-role="content" data-theme="a">
+
+                <div class="main-text" id="main-clock">
+                    <div class="text">Вам осталось жить:</div>
+                    <div id="DateCountdown" data-date="" style="width: 100%;"></div>
+                </div>
+                <div id="main-news"></div>
+
+
+
+            </div>
+
+        </div>
+
+        <div data-role="page" id="form">
+            <div data-role="content" >
+                <h3>Заполните день, месяц, год рождения. Обязательно укажите ваш пол, так как продолжительности жизни
+                    отличаются</h3>
+                <div class="input-form" id="form">
+
+
+                    <div class="form-f">
+                        <label>День рождения</label>
+                        <input type="number" name="day" id="day" placeholder="1">
+                    </div>
+                    <div class="form-f">
+                        <label>месяц ролждения</label>
+                        <input type="number" name="month" id="month" placeholder="6">
+                    </div>
+                    <div class="form-f">
+                        <label>Год ролждения</label>
+                        <input type="number" name="year" id="year"  placeholder="1987">
+                    </div>
+                    <div class="form-f">
+                        <label>Пол</label>
+                        <input type="radio" name="gender" value="woman" id="geneder2">  
+                        <label for="geneder2">Женский</label>
+
+                        <input type="radio" name="gender" value="man" id="geneder1"> 
+                        <label for="geneder1"> Мужской  </label> 
+
+
+
+
+                    </div>
+
+
+
+                    <button class="btn btn-orange" onclick="SetDate()">Далее</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div data-role="page" id="info">
+            <div data-role="content" >
+                <div class="input-form" id="text">
+                    <h2>Информация</h2>
+                    <p>Для расчета времени жизни используется 
+                        средняя продолжительность жизни в России  - 63 лет мужчины
+                        и 74 лет женщины</p>
+                    <p style="display: none">В бесплатной версии доступно 7 мотивирующих сообщений.В платной версии в течении  года.</p>
+                    <button class="btn btn-orange" onclick='$.mobile.navigate("#howwork")'>Далее</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div data-role="page" id="howwork">
+            <div data-role="content" >
+                <div class="input-form" id="text">
+                    <h2>Как работает приложение!</h2>
+
+                    <p>
+                        Разумеется, никто не может предсказать дату смерти.  Уж тем более приложение.
+                        Целью данной программы является мотивировать пользователя на действия для улучшения
+                        качества жизни. Показывает что время отведенное нам безвозвратно уходит. Нельзя
+                        тратить свою жизнь на зло,обиды, занятия нелюбимыми делами! Стремись к лучшему,
+                        доброте и в этом тебе поможет только один человек - ТЫ!
+
+                    </p>
+
+                    <p>
+                        Каждый день на главной странице будут мотивационные тексты.
+                    </p>
+                    <center>
+                        <h3>
+                            И да пребудет с тобой СИЛА! 
+                        </h3>
+
+                    </center>
+                    <button class="btn btn-orange" onclick='$.mobile.navigate("#fullversion")'>Далее</button>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="page" id="fullversion">
+            <div data-role="content" >
+                <div class="input-form" id="text">
+                    <h2>Покупка полной версии</h2>
+
+                    <p>
+                        Пока платной версии нет. И это КРУТО!
+
+                    </p>
+                    <button class="btn btn-orange" onclick='$.mobile.navigate("#main")'>Далее</button>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="setting">
+            <div data-role="content" >
+                <div class="input-form" >
+                    <h2>Настройки</h2>
+
+                        <div class="containing-element">
+                        <label for="flip-min">Уведомления:</label>
+                        <select name="flip-min" id="flip-min" data-role="slider">
+                            <option value="off">Выкл</option>
+                            <option value="on">Вкл</option>
+                        </select>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <a href="#" onclick="showMenu()" class="menu-btn">
+            <img src="img/menu.png">
+        </a>
+    </body>
+</html>

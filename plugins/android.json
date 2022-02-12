@@ -1,0 +1,25 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.deen812.hoursoflife2"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.deen812.hoursoflife2"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.deen812.hoursoflife2"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.deen812.hoursoflife2"
+    }
+  }
+}
